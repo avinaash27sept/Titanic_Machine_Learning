@@ -14,7 +14,7 @@ with Heatmap:
     fig=h.get_figure()
     st.write(fig)
 with CountPlot:
-    chart1, chart2, = st.columns([1,1],gap="small",vertical_alignment='center')
+    chart1, chart2= st.columns([1,1],gap="small",vertical_alignment='center')
     with chart1 : 
         plt.figure(figsize=(6,4))
         plt.title("Count plot for survived vs not survived 0-Not survived 1 - Survived")
@@ -27,3 +27,31 @@ with CountPlot:
         h = sns.countplot(main.train, x=main.train['Survived'],hue='Sex')
         fig=h.get_figure()
         st.write(fig)
+    chart3, chart4= st.columns([1,1],gap="small",vertical_alignment='center')
+    with chart3 : 
+        plt.figure(figsize=(6,4))
+        plt.title("Count plot for survived vs not survived 0-Not survived 1 - Survived Pclass")
+        h = sns.countplot(main.train, x=main.train['Survived'],hue='Pclass')
+        fig=h.get_figure()
+        st.write(fig)
+    with chart4 : 
+        plt.figure(figsize=(6,4))
+        plt.title("Count plot for survived vs not survived 0-Not survived 1 - Survived Pclass")
+        h = sns.countplot(main.train, x=main.train['Survived'],hue='SibSp')
+        fig=h.get_figure()
+        st.write(fig)
+with BoxPlot:
+    chart1, chart2= st.columns([1,1],gap="small",vertical_alignment='center')
+    with chart1 : 
+        plt.figure(figsize=(6,4))
+        plt.title("BoxPlot Age Count")
+        h= sns.boxplot(x='Pclass',y='Age',data=main.train,palette='winter')
+        fig=h.get_figure()
+        st.write(fig)
+    with chart2 : 
+        plt.figure(figsize=(6,4))
+        plt.title("BoxPlot Gender Wise Age Count")
+        h= sns.boxplot(x='Pclass',y='Age',data=main.train,palette='winter',hue='Sex')
+        fig=h.get_figure()
+        st.write(fig)
+    
