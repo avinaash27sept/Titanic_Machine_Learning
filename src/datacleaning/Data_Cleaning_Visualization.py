@@ -7,6 +7,7 @@ import sys
 sys.path.insert(0, 'src/')
 import Main as main
 Heatmap,  BoxPlot = st.tabs(['Heat Map','Box Plot'])
+
 with Heatmap:
     plt.figure(figsize=(6,4))
     plt.title("Heatmap to check null values")
