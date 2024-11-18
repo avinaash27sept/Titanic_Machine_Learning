@@ -29,3 +29,4 @@ with BoxPlot:
         h= sns.boxplot(x='Pclass',y='Age',data=main.train,palette='winter',hue='Sex')
         fig=h.get_figure()
         st.write(fig)
+        

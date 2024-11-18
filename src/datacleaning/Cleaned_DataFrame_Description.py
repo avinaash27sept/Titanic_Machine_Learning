@@ -29,10 +29,20 @@ def replaceAge(x) :
         return age
         # print("bye")
 m.train['Age']=m.train[['Pclass','Age']].apply(replaceAge,axis=1)
+
+
+m.train['Sex'].replace({'male':0,'female':1},inplace= True)
+male= pd.get_dummies(m.train["Sex"], drop_first=True)
+m.train['Embarked'].value_counts()
+E= pd.get_dummies(m.train['Embarked'])
+pd.concat([m.train,male, E], axis=1)
+
 m.train.to_csv("agemodified.csv")
+
 X= m.train[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare','Embarked']]
 Y=m.train[['Survived']]
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42)
 
 with st.expander("DataFrame",expanded=False,icon=":material/table:") :
-    st.dataframe(m.train)
+      st.dataframe(m.train)
+    
