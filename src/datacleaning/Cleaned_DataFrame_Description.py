@@ -2,18 +2,16 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import Main as m
+from sklearn.model_selection import train_test_split
 import sys 
 sys.path.insert(0,'src/')
 
-st.write("Clean data frame")
-train = pd.read_csv("resources/csv/titanic_train.csv")
-train['Age'].mean()
-train['Age'][train['Pclass']==1].mean()
-train['Age'][train['Pclass']==2].mean()
-train['Age'][train['Pclass']==3].mean()
+m.train['Age'].mean()
+m.train['Age'][m.train['Pclass']==1].mean()
+m.train['Age'][m.train['Pclass']==2].mean()
+m.train['Age'][m.train['Pclass']==3].mean()
 
-with st.expander("DataFrame",expanded=False,icon=":material/table:") :
-    st.dataframe(m.train)
+
 
 def replaceAge(x) :
     age=x[1]
@@ -30,6 +28,11 @@ def replaceAge(x) :
     else :
         return age
         # print("bye")
-        train['Age']=train[['Pclass','Age']].apply(replaceAge,axis=1)
-        train.to_csv("agemodified.csv")
-        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42)
+m.train['Age']=m.train[['Pclass','Age']].apply(replaceAge,axis=1)
+m.train.to_csv("agemodified.csv")
+X= m.train[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare','Embarked']]
+Y=m.train[['Survived']]
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=42)
+
+with st.expander("DataFrame",expanded=False,icon=":material/table:") :
+    st.dataframe(m.train)

@@ -5,6 +5,7 @@ LOGO_URL_LARGE="resources/logo/logo.png"
 st.logo(LOGO_URL_LARGE,size="large")
 train = pd.read_csv("resources/csv/titanic_train.csv")
 st.title(":blue[Titanic Ship Survival Prediction System]:")
+train1 = train.copy()
 pages = {
 
     "Data" : [st.Page("src/Data/DataFrame_Description.py"),st.Page("src/Data/visualization.py"),st.Page("src/Data/analysis.py")],
