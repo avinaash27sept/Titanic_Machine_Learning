@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-# LOGO_URL_LARGE="resources/logo/logo.png"
-# st.logo(LOGO_URL_LARGE,size="large")
+LOGO_URL_LARGE="resources/logo/logo.png"
+st.logo(LOGO_URL_LARGE,size="large")
 
 #def readData(file) : 
 train = pd.read_csv("resources/csv/titanic_train.csv")
